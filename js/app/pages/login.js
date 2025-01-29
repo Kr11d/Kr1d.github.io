@@ -13,8 +13,8 @@ export const login = {
     methods: {
 
     },
-    template: '
+    template: `
         <div  class = "flex" >
             fghgfh
-        </div > '
+        </div > `
     };
