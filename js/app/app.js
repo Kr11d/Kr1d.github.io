@@ -91,12 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     var app = Vue.createApp(main)
-        .component('leader', header)
-        .component('popup', popup)
-        .component('search', search)
-        .component('msg', msg)
-        .component('toogle', toogle)
-        .component('Image', img)
         .use(router)
         .mount('#content')
 });
