@@ -9,7 +9,7 @@ import { statistics } from './pages/statistics.js';
 import { payments } from './pages/payments.js';
 import { sites } from './pages/sites.js';
 
-export const router VueRouter.createRouter({
+export const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
     routes: [
         { path: '/', name: 'Sign in', component: login },
@@ -21,4 +21,5 @@ export const router VueRouter.createRouter({
         { path: '/statistics', name: 'Statistics', component: statistics },
         { path: '/payments', name: 'Payments', component: payments },
         { path: '/sites', name: 'Sites', component: sites }, 
+    ]
 });

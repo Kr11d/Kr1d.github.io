@@ -1,10 +1,5 @@
 import { router } from './router.js';
-import { header } from './widgets/header.js';
-import { search } from './widgets/search.js';
-import { popup } from './widgets/popup.js';
-import { msg } from './widgets/msg.js';
-import { toogle } from './widgets/toogle.js';
-import { img } from './widgets/img.js';
+
 document.addEventListener('DOMContentLoaded', function () {
     const main = {
         data() {
@@ -28,21 +23,17 @@ document.addEventListener('DOMContentLoaded', function () {
         methods: {
             init() {
                 var self = this;
-                if (window.localStorage.getItem('user')) self.user = JSON.parse(window.localStorage.getItem('user');
+                if (window.localStorage.getItem('user')) self.user = JSON.parse(window.localStorage.getItem('user'));
 
-                router.isReady().then(() {
+                router.isReady().then(() => {
                     if (window.localStorage.getItem("user")) {
-                        self.user JSON.parse(window.localStorage.getItem("user"));
+                        self.user = JSON.parse(window.localStorage.getItem("user"));
                         if (self.$route['path'] == '/' && self.user.type == 'admin') {
                             self.page('/campaigns');
                         } else if (['/campaigns', '/campaign', '/users', '/user'].includes(self.$route['path']) && self.user.type != 'admin') {
                             self.page('/statistics');
                         } else if (['/statistics', '/payments', '/sites'].includes(self.$route['path']) && self.user.type == 'admin') {
                             self.page('/campaigns');
-                        } else if (['/campaigns', '/campaign', '/users', '/user', '/statistics', '/payments', '/sites'].includes(self.$route['p' {
-                            self.page();
-                        } else if (!['/campaigns', '/campaign', '/users', '/user', '/statistics', '/payments', '/sites'].includes(self.$route!' '{
-                            self.page();
                         } 
                     } else {
                         self.page('/');
@@ -51,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             logout() {
                 this.user = { name: "", phone: "", email: "", date: "", date: "", auth: "" };
-                this.page('/');
+                this.page('');
                 window.localStorage.setItem('user', '');
             },
             scrollTop() {
@@ -76,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.title = this.$route['name'];
             },
             toFormData: function (obj) {
-                var fd new FormData();
+                var fd = new FormData();
 
                 for (var x in obj) {
                     if (typeof obj[x] === 'object' && x != 'img' && x != 'copy') {
