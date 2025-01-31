@@ -87,75 +87,106 @@
         margin-left: 0;
     }
 }
-.login-container {
+/* Styles for the login component based on the provided image */
+
+/* Global container */
+.flex {
     display: flex;
     height: 100vh;
+    background: #f9f9f9;
     font-family: 'Arial', sans-serif;
 }
 
-.left-area {
-    width: 40%;
-    background-color: #f8f9fa;
-    padding: 50px 30px;
+/* Left area for the form */
+#left-area {
+    background: #ffffff;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
 }
 
-.header h1 {
-    font-size: 28px;
+.header {
     margin-bottom: 20px;
+}
+
+.wrapper {
+    align-items: center;
+}
+
+h1 {
     color: #333;
+    font-size: 24px;
 }
 
-.form-container {
-    max-width: 300px;
-    margin-top: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
+.row {
+    margin: 15px 0;
 }
 
 label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    color: #666;
 }
 
-input[type='email'],
-input[type='password'] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.btn-signin {
+input[type="email"], input[type="password"] {
     width: 100%;
     padding: 12px;
-    background-color: #28a745;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #00aaff;
+    outline: none;
+}
+
+.btn {
+    background-color: #00c874;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
-    color: white;
-    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-    .btn-signin:hover {
-        background-color: #218838;
+    .btn:hover {
+        background-color: #00b56a;
         transform: translateY(-2px);
     }
 
-.right-area {
-    width: 60%;
-    position: relative;
+/* Right area with image */
+#right-area {
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-    .right-area img {
-        width: 100%;
-        height: 100%;
+    #right-area img {
+        max-width: 100%;
+        max-height: 100%;
         object-fit: cover;
+        border-left: 5px solid #00c874;
     }
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
+
+    #left-area, #right-area {
+        width: 100%;
+        padding: 10px;
+    }
+}
 
