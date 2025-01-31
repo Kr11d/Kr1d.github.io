@@ -36,6 +36,9 @@ export const login = {
         <div  class = "flex" >
             <msg ref="msg"/>
             <div id="left-area" class="w40">
+                <img :src="parent.url+'/app/views/images/Cover_'+img+'.jpg'" />
+            </div>
+            <div id="right-area" class="w60">
                 <div class="header">
                     <div class="wrapper flex">
                         <div class="w40 logo">
@@ -62,9 +65,6 @@ export const login = {
                         </div>
                     </form>
                 </div>
-            </div>
-            <div id="right-area" class="w60">
-                <img :src="parent.url+'/app/views/images/Cover_'+img+'.jpg'" />
             </div>
         </div > `
     };
