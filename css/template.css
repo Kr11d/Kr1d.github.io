@@ -1,0 +1,163 @@
+.alertMsg {
+    font-size: inherit;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 5%;
+    left: 2%;
+    border-radius: 10px;
+    z-index: 999;
+    height: auto;
+    display: none;
+    color: red;
+    background-color: rgba(255, 228, 228, 0.75);
+    box-shadow: 0px 0 10px 0px rgba(205, 30, 11, 0.5);
+    animation: showFromLeft 0.3s linear;
+}
+
+.successMsg
+{
+    font-size: inherit;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 5%;
+    left: 2%;
+    border-radius: 10px;
+    z-index: 999;
+    height: auto;
+    display: none;
+    color: green;
+    background-color: rgba(218, 249, 223, 0.75);
+    box-shadow: 0px 0 10px 0px rgb(11 205 61/50%);
+    animation: showFromLeft 0.3s normal;
+}
+
+@keyframes showFromLeft {
+    0% {
+        opacity: 0;
+        margin-left: -100%;
+    }
+
+    25% {
+        opacity: 0.2;
+        margin-left: -50%;
+    }
+
+    35% {
+        opacity: 0.4;
+        margin-left: -20%;
+    }
+
+    50% {
+        opacity: 0.8;
+        margin-left: -15%;
+    }
+
+    65% {
+        opacity: 0.9;
+        margin-left: -12%;
+    }
+
+    75% {
+        opacity: 0.9;
+        margin-left: -10%;
+    }
+
+    80% {
+        opacity: 0.9;
+        margin-left: -8%;
+    }
+
+    85% {
+        opacity: 0.95;
+        margin-left: -6%;
+    }
+
+    90% {
+        opacity: 0.95;
+        margin-left: -4%;
+    }
+
+    95% {
+        opacity: 0.95;
+        margin-left: -2%;
+    }
+
+    100% {
+        opacity: 1;
+        margin-left: 0;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+#wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+    #wrapper #left-area {
+        width: 40%;
+        padding: 40px;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #wrapper #right-area {
+        width: 60%;
+        background-color: #f5f5f5;
+         /* Замініть на актуальний шлях */
+        background-size: cover;
+        background-position: center;
+    }
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.inner-form {
+    width: 100%;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn {
+    width: 100%;
+    background-color: #00c853;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .btn:hover {
+        background-color: #00b248;
+        transform: scale(1.05);
+    }
+
+.header {
+    margin-bottom: 30px;
+}
+
+    .header .logo img {
+        max-width: 100%;
+        height: auto;
+    }

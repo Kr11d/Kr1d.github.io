@@ -1,9 +1,10 @@
+import { axios } from "../../libs/axios.min";
+
 export const login = {
     data: function () {
         return {
             img: 1,
-            hs: 0,
-            parent:''
+            parent: ''
         }
     },
     mounted: function () {
@@ -11,10 +12,56 @@ export const login = {
         this.parent = this.$parent.$parent;
     },
     methods: {
+        randomIntFromInterval: function (min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        },
+        login: function () {
+            var self = this;
+            var data = self.parent.toFormData(self.parent.formdata);
 
+            axios.post(this.parent.url + "/site/login", data).then(function (response){
+                if (response.data.error) {
+                    self.$refs.msg.alertFun(response.data.error);
+                }
+                if (response.data.user) {
+                    self.parent.user = response.data.user;
+                    self.parent.page('/campaigns');
+                    window.localStorage.setItem('user', JSON.stringify(self.parent.user));
+                }
+            }).catch(function (error){
+        console.log('errrors: ', error);
+            });
+        },
     },
     template: `
         <div  class = "flex" >
-            fghgfh
+            <msg ref="msg"/>
+            <div id="left-area" class="w40">
+                <div class="header">
+                    <div class="wrapper flex">
+                        <div class="w40 logo">
+                            <img src="parent.url+'/app/views/images/logo.svg'" />
+                        </div>
+                        <div class="w60 al">
+                            <h1> Affiliate Sign in</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="form inner-form p20">
+                    <form @submit.prevent="login()" v-if="parent.formData">
+                        <div class="row">
+                            <label>Email</label>
+                            <input type="email" v-model="parent.formData.email" required>
+                        </div>
+
+                        <div class="row">
+                            <button class="btn">Sign in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="right-area" class="w60">
+                <img :src="parent.url+'/app/views/images/Cover_'+img+'.jpg'" />
+            </div>
         </div > `
     };
