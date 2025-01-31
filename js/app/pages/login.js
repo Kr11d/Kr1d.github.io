@@ -1,4 +1,3 @@
-import { axios } from "../../libs/axios.min";
 
 export const login = {
     data: function () {
@@ -54,6 +53,10 @@ export const login = {
                             <input type="email" v-model="parent.formData.email" required>
                         </div>
 
+                        <div class="row">
+                            <label>Password</label>
+                            <input type="password" v-model="parent.formData.password" required autocomplete="on">
+                        </div>
                         <div class="row">
                             <button class="btn">Sign in</button>
                         </div>
