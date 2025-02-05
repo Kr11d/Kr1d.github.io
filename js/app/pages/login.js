@@ -6,7 +6,7 @@ export const login = {
             parent: ''
         }
     },
-    mounted: function () {
+    mounted: function() {
         this.img = this.randomIntFromInterval(1, 7);
         this.parent = this.$parent.$parent;
     },
@@ -14,11 +14,11 @@ export const login = {
         randomIntFromInterval: function (min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min);
         },
-        login: function () {
+        login: function() {
             var self = this;
             var data = self.parent.toFormData(self.parent.formdata);
 
-            axios.post(this.parent.url + "/site/login", data).then(function (response){
+            axios.post(this.parent.url + "/site/login", data).then(function(response){
                 if (response.data.error) {
                     self.$refs.msg.alertFun(response.data.error);
                 }
@@ -28,21 +28,20 @@ export const login = {
                     window.localStorage.setItem('user', JSON.stringify(self.parent.user));
                 }
             }).catch(function (error){
-        console.log('errrors: ', error);
+                console.log('errors: ', error);
             });
         },
     },
     template: `
-        <div  class = "flex" >
+        <div  class = "flex">
             <msg ref="msg"/>
             <div id="left-area" class="w40">
-                <img :src="parent.url+'/app/views/images/Cover_'+img+'.jpg'" />
-            </div>
+                
             <div id="right-area" class="w60">
                 <div class="header">
                     <div class="wrapper flex">
                         <div class="w40 logo">
-                            <img src="parent.url+'/app/views/images/logo.svg'" />
+                            <img :src="parent.url+'/app/views/images/logo.svg'" />
                         </div>
                         <div class="w60 al">
                             <h1> Affiliate Sign in</h1>
@@ -65,6 +64,9 @@ export const login = {
                         </div>
                     </form>
                 </div>
+            </div>
+            <div id="right-area" class="w60">
+                <img :src="parent.url+'/app/views/images/Cover_'+img+'.jpg'" />
             </div>
         </div > `
     };

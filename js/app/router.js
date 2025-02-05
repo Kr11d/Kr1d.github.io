@@ -1,10 +1,10 @@
 import { login } from './pages/login.js';
-import { campaings } from './pages/campaings.js';
+import { campaigns } from './pages/campaigns.js';
 
 export const router = VueRouter.createRouter({
     history: VueRouter.createWebHashHistory(),
     routes: [
         { path: '/', name: 'Sign in', component: login },
-        { path: '/campaings', name: 'Campaings', component: campaings },
+        { path: '/campaigns', name: 'Campaigns', component: campaigns },
     ]
 });

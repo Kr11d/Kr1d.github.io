@@ -1,4 +1,4 @@
-export const campaigns = {
+export const campaings = {
     data: function () {
         return {
             parent: "",
