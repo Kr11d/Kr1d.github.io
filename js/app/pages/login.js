@@ -44,7 +44,7 @@ export const login = {
                             <img :src="parent.url+'/app/views/images/logo.svg'" />
                         </div>
                         <div class="w60 al">
-                            <h1> Affiliate Sign in</h1>
+                            <h1>Affiliate Sign in</h1>
                         </div>
                     </div>
                 </div>
