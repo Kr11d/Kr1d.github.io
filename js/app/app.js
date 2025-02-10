@@ -5,7 +5,7 @@ import { header } from './widgets/header.js';
 import { toogle } from './widgets/toogle.js';
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const main = {
         data() {
             return {
@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 formData: {},
                 title: "",
                 date: "",
-                time: ""
+                time: "",
             }
         },
         watch: {
-            $route: function () {
+            $route: function() {
                 this.init();
             }
         },
-        mounted: function () {
+        mounted: function() {
             this.init();
         },
         methods: {
@@ -83,12 +83,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         for (var y in obj[x]) {
                             if (typeof obj[x] === 'object') {
                                 for (var z in obj[x][y]) {
-                                    fd.append(x + ' [' + y + '] [' + z + ']', obj[x][y][z]);
+                                    fd.append(x + '[' + y + '][' + z + ']', obj[x][y][z]);
                                 }
                             } else {
-                                fd.append(x + ' [' + y + ']', obj[x][y]);
+                                fd.append(x + '[' + y + ']', obj[x][y]);
                             }
-                            I
                         }
                     } else if (x != 'copy') {
                         fd.append(x, obj[x]);
