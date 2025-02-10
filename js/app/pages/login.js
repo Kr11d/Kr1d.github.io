@@ -16,7 +16,7 @@ export const login = {
         },
         login: function() {
             var self = this;
-            var data = self.parent.toFormData(self.parent.formdata);
+            var data = self.parent.toFormData(self.parent.formData);
 
             axios.post(this.parent.url + "/site/login", data).then(function(response){
                 if (response.data.error) {
