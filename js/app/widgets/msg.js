@@ -95,7 +95,7 @@ export const msg = {
                 <i class="fas fa-check-circle"></i> {{success}}
             </div>
         </div>
-        <popup ref="confirm" title="confirmTitle">
+        <popup ref="confirm" :title="confirmTitle">
             <div class=" al">
                 <i class="fas fa-info-circle"></i> {{confirm}}
                 <div class="botBtns">

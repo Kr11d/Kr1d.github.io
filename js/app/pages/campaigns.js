@@ -7,7 +7,7 @@ export const campaigns = {
             date: "",
             date2: "",
             q: "",
-            sort: "", 
+            sort: "",
             loader: 1,
             iChart: -1,
             id: 0,
@@ -20,7 +20,6 @@ export const campaigns = {
         if (!this.parent.user) {
             this.parent.logout();
         }
-        //this.$refs.msg.successFun ("Successfully updated campaign!"); 
         console.log(this.parent.formData.all);
         this.get();
         this.GetFirstAndLastDate();
@@ -70,9 +69,9 @@ export const campaigns = {
                 var self = this;
                 var data = self.parent.toFormData(self.parent.formData);
                 axios.post(this.parent.url + "/site/deleteCampaign?auth=" + this.parent.user.auth, data).then(function (response) {
-                    if(response.data.error){
+                    if (response.data.error) {
                         self.$refs.header.$refs.msg.alertFun(response.data.error);
-                    }else{
+                    } else {
                         self.$refs.header.$refs.msg.successFun("Successfully deleted campaign!");
                         self.get();
                     }
@@ -81,7 +80,7 @@ export const campaigns = {
                 });
             }
         },
-        Line: function (item) {
+        line: function (item) {
             setTimeout(function () {
                 let dates = [];
                 let clicks = [];
@@ -89,7 +88,7 @@ export const campaigns = {
                 let leads = [];
                 if (item && item['line']) {
                     for (let i in item['line']) {
-                        dates.push(1);
+                        dates.push(i);
                         //if(item[i].include=='true') { 
                         clicks.push(item['line'][i].clicks);
                         views.push(item['line'][i].views);
@@ -98,7 +97,7 @@ export const campaigns = {
                     }
                 }
                 //console.log(clicks,views); 
-                document.getElementById('chartOuter').innerHTML = ' <div id="chartHints"><div class="chartHintsViews">Views</div><div class="charHints "></div>'
+                document.getElementById('chartOuter').innerHTML = '<div id="chartHints" class="chart-hints"><p class="chartHintsViews">Views</p><p class="chartHintsClicks">Clicks</p></div><canvas id="myChart"></canvas>';
                 const ctx = document.getElementById('myChart');
                 const xScaleImage = {
                     id: "xScaleImage",
@@ -174,21 +173,21 @@ export const campaigns = {
                     this.data.items[this.iChart].sites[i].include = prop;
                 }
             }
-            this.parent.formData = this.data.items[this.ichart];
+            this.parent.formData = this.data.items[this.iChart];
             this.get();
         }
     },
-  
-    template:`
+
+    template: `
         <div class="inside-content"> 
             <Header ref="header" />
-            <div id='spinner' v-if="Lider'></div> 
+            <div id='spinner' v-if="loader"></div> 
             <div class="wrapper"> 
                 <div class="flex panel"> 
                     <div class="w20 ptb30"> 
                         <h1>Campaigns</h1> 
                     </div> 
-                    <div class="w60 ptb20 ac"><input type="date" v-model="date" @change="get()" /> - <input type="date" v-model="date2" @change="get()" /> 
+                    <div class="w60 ptb20 ac"><input type="date" v-model="date" @change="get()" /> - <input type="date" v-model="date2" @change="get()" /> </div>
                     <div class="w20 al ptb20"> 
                         <a class="btnS" href="#" @click.prevent="parent.formData={};$refs.new.active=1"><i class="fas fa-plus"></i>New</a>
                     </div> 
@@ -196,7 +195,7 @@ export const campaigns = {
 
                 <popup ref="chart" fullscreen="true" title="Chart"> 
                     <div class="flex panel"> 
-                        <div class="w30 ptb25"><input type="date" v-model="date" @change="get();" /> - <input type="date" v-model="date2" @change="get()"/>
+                        <div class="w30 ptb25"><input type="date" v-model="date" @change="get();" /> - <input type="date" v-model="date2" @change="get();" /></div>
                         <div class="w70 al"> 
                             <div class="flex cubes"> 
                                 <div class="w30 clicks"> 
@@ -213,7 +212,7 @@ export const campaigns = {
                                 </div> 
                                 <div class="w30 ctr"> 
                                     <div>CTR</div> 
-                                    {{(data.items[iChart].clicks 100/data.items[iChart].views).toFixed(2)}} %
+                                    {{(data.items[iChart].clicks*100/data.items[iChart].views).toFixed(2)}} %
                                 </div>
                             </div> 
                         </div> 
@@ -274,7 +273,7 @@ export const campaigns = {
                                 <td class="id"> 
                                     <toogle v-model="item.published" @update:modelValue="parent.formData = item;action();" />
                                 </td> 
-                                <td><router-link:to=""/campaign/'+item.id">{{item.title}}</router-link></td> 
+                                <td><router-link :to="'/campaign/'+item.id">{{item.title}}</router-link></td> 
                                 <td class="id"> 
                                     <a href="#" @click.prevent="$refs.details.active=1;getDetails(item.id,1)"> 
                                         {{item.views}} 

@@ -10,7 +10,7 @@ export var toogle = {
         }
     },
     mounted() {
-        this.value = this.modelValue;    I 
+        this.value = this.modelValue;    
     },
     methods: {
         change() {
