@@ -1,24 +1,25 @@
 export const msg = {
-    data: function () {
+    data() {
         return {
             alert: "",
             success: "",
             t1: "",
             t2: "",
             code: 0,
-            interval: ""
-        }
+            interval: "",
+            confirmTitle: "", 
+            confirm: "",
+        };
     },
-    watch: {
-    },
+    watch: {},
     mounted() {
         this.parent = this.$parent.$parent.$parent;
     },
     methods: {
         fadeIn(el, timeout, display) {
             el.style.opacity = 0;
-            el.style.display = display || 'block';
-            el.style.transition = `opacity ${timeout} ms`;
+            el.style.display = display || "block";
+            el.style.transition = `opacity ${timeout}ms`;
             setTimeout(() => {
                 el.style.opacity = 1;
             }, 10);
@@ -27,20 +28,20 @@ export const msg = {
             el.style.opacity = 1;
             el.style.transition = `opacity ${timeout}ms`;
             el.style.opacity = 0;
-
             setTimeout(() => {
-                el.style.display = 'none';
+                el.style.display = "none";
             }, timeout);
         },
         successFun(msg) {
             this.success = msg;
             var self = this;
-            if (document.querySelector('.successMsg')) document.querySelector('.successMsg').style = "";
+            if (document.querySelector(".successMsg"))
+                document.querySelector(".successMsg").style = "";
             clearTimeout(self.t1);
             clearTimeout(self.t2);
             self.t1 = setTimeout(function () {
-                const block = document.querySelector('.successMsg');
-                self.fadeIn(block, 1000, 'flex');
+                const block = document.querySelector(".successMsg");
+                self.fadeIn(block, 1000, "flex");
                 self.t2 = setTimeout(function () {
                     self.fadeOut(block, 1000);
                 }, 3000);
@@ -50,17 +51,19 @@ export const msg = {
         alertFun(msg) {
             this.alert = msg;
             var self = this;
-            if (document.querySelector('.alertMsg')) document.querySelector('.alertMsg').style = "";
+            if (document.querySelector(".alertMsg"))
+                document.querySelector(".alertMsg").style = "";
             clearTimeout(self.t1);
             clearTimeout(self.t2);
             self.t1 = setTimeout(function () {
-                const block = document.querySelector('.alertMsg');
-                self.fadeIn(block, 1000, 'flex');
+                const block = document.querySelector(".alertMsg");
+                self.fadeIn(block, 1000, "flex");
                 self.t2 = setTimeout(function () {
                     self.fadeOut(block, 1000);
                 }, 3000);
             }, 100);
         },
+
         confirmFun(title, text) {
             this.code = 0;
             var self = this;
@@ -71,7 +74,6 @@ export const msg = {
                 self.interval = setInterval(function () {
                     if (self.code > 0) resolve();
                 }, 100);
-
             }).then(function () {
                 clearInterval(self.interval);
                 self.$refs.confirm.active = 0;
@@ -82,27 +84,33 @@ export const msg = {
                     return false;
                 }
             });
-        }
+        },
     },
     template: `
-        <div class="alertMsg" v-if="alert">
-            <div class="wrapper al">
-                <i class="fas fa-times-circle"></i> {{alert}}
-            </div>
+    <div>
+        <div class="alertMsg" v-if="alert"> 
+            <div class="wrapper al"> 
+                <i class="fas fa-times-circle"></i> {{ alert }} 
+            </div> 
+        </div> 
+        <div class="successMsg" v-if="success"> 
+            <div class="wrapper al"> 
+                <i class="fas fa-check-circle"></i> {{ success }} 
+            </div> 
         </div>
-        <div class="successMsg" v-if="success">
-            <div class="wrapper al">
-                <i class="fas fa-check-circle"></i> {{success}}
-            </div>
+    </div>
+
+    <popup ref="confirm" :title="confirmTitle"> 
+      <div class="al">
+        <div class= "ab1">
+          {{confirm}}  <i class="fas fa-info-circle"></i> 
         </div>
-        <popup ref="confirm" :title="confirmTitle">
-            <div class=" al">
-                <i class="fas fa-info-circle"></i> {{confirm}}
-                <div class="botBtns">
-                    <a class="btnS" href="#" @click.prevent="code=1">Yes</a>
-                    <a class="btnS" href="#" @click.prevent="code=2">No</a>
-                </div>
-            </div>
-        </popup>
-    `
+        <div class="botBtns"> 
+          <a class="btnSS" href="#" @click.prevent="code=1">Yes</a> 
+          <a class="btnSS" href="#" @click.prevent="code=2">No</a> 
+        </div> 
+      </div> 
+    </popup>
+    
+    `,
 };
