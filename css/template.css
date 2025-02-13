@@ -1198,3 +1198,71 @@ p {
     padding: 20px 0;
     color: rgb(66, 69, 75);
 }
+
+@media (max-width: 768px) {
+    #left-area {
+        display: none;
+        width: 0;
+    }
+    #right-area {
+        width: 100%;
+    }
+    .headers .wrappers.flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .w40.logo img {
+        width: 50px;
+    }
+    .w60.al1 h1 {
+        font-size: 18px;
+    }
+    .forms .row label {
+        font-size: 16px;
+    }
+    .forms .row input,
+    .forms .row button.btn {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .w40.logo img {
+        width: 40px;
+    }
+    .w60.al1 h1 {
+        font-size: 16px;
+    }
+    .forms .row label {
+        font-size: 14px;
+    }
+    .forms .row input,
+    .forms .row button.btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .forms .row {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 320px) {
+    .w40.logo img {
+        width: 30px;
+    }
+    .w60.al1 h1 {
+        font-size: 14px;
+    }
+    .forms .row label {
+        font-size: 12px;
+    }
+    .forms .row input,
+    .forms .row button.btn {
+        padding: 8px;
+        font-size: 12px;
+    }
+    .forms .row {
+        max-width: 280px;
+    }
+}
